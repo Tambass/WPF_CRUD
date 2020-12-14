@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="364,70,0,59" Name="dataGridCategory" Width="418" ItemsSource="{Binding Path=LoadDataBinding}" CanUserResizeRows="False">
+        <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="284,89,0,40" Name="dataGridCategory" Width="418" ItemsSource="{Binding Path=LoadDataBinding}" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=id}" Header="Id" Width="100" IsReadOnly="True" />
                 <DataGridTextColumn Binding="{Binding Path=name}" Header="Name" Width="100" IsReadOnly="True" />
@@ -15,6 +15,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="86,89,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="118,154,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="86,141,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="109,210,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Show" HorizontalAlignment="Left" Margin="109,266,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>
