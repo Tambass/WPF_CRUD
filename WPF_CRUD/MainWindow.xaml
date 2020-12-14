@@ -19,5 +19,6 @@
         <Button Content="Add" Name="addBtn" HorizontalAlignment="Left" Margin="109,210,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Save"/>
         <Button Content="Show" HorizontalAlignment="Left" Margin="109,266,0,0" VerticalAlignment="Top" Width="75" Click="Btn_Show"/>
         <Label Content="Nom :" Name="label" HorizontalAlignment="Left" Margin="86,58,0,0" VerticalAlignment="Top"/>
+        <Button Content="Delete" Name="deleteBtn" Visibility="Hidden" HorizontalAlignment="Left" Margin="109,323,0,0" VerticalAlignment="Top" Width="75" Click="deleteBtn_Click"/>
     </Grid>
 </Window>

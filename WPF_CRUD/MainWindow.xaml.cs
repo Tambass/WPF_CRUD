@@ -97,8 +97,20 @@ namespace WPF_CRUD
                     name.Text = dr[1].ToString();
                     price.Text = dr[2].ToString();
                     addBtn.Content = "Change";
+                    deleteBtn.Visibility = Visibility.Visible;
                 }
             }
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            mysqlConn.Open();
+            MySqlCommand delProd = new MySqlCommand("DELETE FROM Product WHERE id = ?id", mysqlConn);
+            delProd.Parameters.AddWithValue("?id", label.Content);
+            delProd.ExecuteNonQuery();
+            Clear();
+            MessageBox.Show("Produit supprimé avec succès !");
+            mysqlConn.Close();
         }
     }
 }
