@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="364,70,0,59" Name="dataGridCategory" Width="418" ItemsSource="{Binding Path=LoadDataBinding}" CanUserResizeRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=id}" Header="Id" Width="100" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Path=name}" Header="Name" Width="100" IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Path=price}" Header="Price" Width="100" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="86,89,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="118,154,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
