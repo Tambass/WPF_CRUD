@@ -53,12 +53,24 @@ namespace WPF_CRUD
             try
             {
                 mysqlConn.Open();
+                if(addBtn.Content.Equals("Change"))
+                {
+                    MySqlCommand editProd = new MySqlCommand("UPDATE Product SET name = ?name, price = ?price WHERE id = ?id", mysqlConn);
+                    editProd.Parameters.AddWithValue("?id", label.Content.ToString().Trim());
+                    editProd.Parameters.AddWithValue("?name", name.Text.Trim());
+                    editProd.Parameters.AddWithValue("?price", price.Text.Trim());
+                    editProd.ExecuteNonQuery();
+                    Clear();
+                    MessageBox.Show("Produit modifié avec succès !");
+                } else
+                {
                 MySqlCommand addProd = new MySqlCommand("INSERT INTO Product (name, price) VALUES (?name, ?price)", mysqlConn);
                 addProd.Parameters.AddWithValue("?name", name.Text.Trim());
                 addProd.Parameters.AddWithValue("?price", price.Text.Trim());
                 addProd.ExecuteNonQuery();
                 Clear();
                 MessageBox.Show("Produit ajouté avec succès !");
+                }
                 mysqlConn.Close();
             }
             catch (MySqlException ex)
@@ -71,6 +83,22 @@ namespace WPF_CRUD
         {
             name.Text = "";
             price.Text = "";
+        }
+
+        private void dataGridProduct_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (sender != null){
+                DataGrid grid = sender as DataGrid;
+                if (grid != null && grid.SelectedItems != null && grid.SelectedItems.Count == 1)
+                {
+                    DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
+                    DataRowView dr = (DataRowView)dgr.Item;
+                    label.Content = dr[0].ToString();
+                    name.Text = dr[1].ToString();
+                    price.Text = dr[2].ToString();
+                    addBtn.Content = "Change";
+                }
+            }
         }
     }
 }
