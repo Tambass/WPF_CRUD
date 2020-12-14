@@ -30,7 +30,7 @@ namespace WPF_CRUD
             InitializeComponent();
         }
 
-        private void Btn_Save(object sender, RoutedEventArgs e)
+        private void Btn_Show(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -46,6 +46,31 @@ namespace WPF_CRUD
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void Btn_Save(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                mysqlConn.Open();
+                MySqlCommand addProd = new MySqlCommand("INSERT INTO Product (name, price) VALUES (?name, ?price)", mysqlConn);
+                addProd.Parameters.AddWithValue("?name", name.Text.Trim());
+                addProd.Parameters.AddWithValue("?price", price.Text.Trim());
+                addProd.ExecuteNonQuery();
+                Clear();
+                MessageBox.Show("Produit ajouté avec succès !");
+                mysqlConn.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        void Clear()
+        {
+            name.Text = "";
+            price.Text = "";
         }
     }
 }
